@@ -1,4 +1,4 @@
-﻿namespace TheLongDarkNuGetFactory;
+namespace TheLongDarkNuGetFactory;
 
 internal static class NuSpec
 {
@@ -27,6 +27,7 @@ internal static class NuSpec
 		        <dependency id="HarmonyX" version="2.10.2" exclude="Build,Analyzers" />
 		        <dependency id="Il2CppInterop.Runtime" version="1.5.1" exclude="Build,Analyzers" />
 		        <dependency id="LavaGang.MelonLoader" version="0.7.1" exclude="Build,Analyzers" />
+				<dependency id="Newtonsoft.Json" version="13.0.4" exclude="Build,Analyzers" />
 		      </group>
 		    </dependencies>
 		  </metadata>

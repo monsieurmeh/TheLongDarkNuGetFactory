@@ -1,11 +1,16 @@
 ﻿using AsmResolver.DotNet;
 using ICSharpCode.SharpZipLib.Zip;
+using System;
+using System.IO;
 using System.Text;
 
 namespace TheLongDarkNuGetFactory;
 
 internal class Program
 {
+
+	static string outputfolder { get; set; } = $"../../../../Nuget";
+
 	static void Main(string[] args)
 	{
 		MemoryStream stream = new();
@@ -14,9 +19,16 @@ internal class Program
 		foreach ((string path, byte[] data) in GetEntries(args[0]))
 		{
 			zipFile.Add(new StreamDataSource(new MemoryStream(data)), new ZipEntry(path));
+			Console.WriteLine($"Added: {path}");
 		}
 		zipFile.CommitUpdate();
-		File.WriteAllBytes($"{PackageInformation.Name}.nupkg", stream.ToArray());
+		if (!Directory.Exists(outputfolder))
+		{
+			Directory.CreateDirectory(outputfolder);
+		}
+
+		File.WriteAllBytes($"{outputfolder}/{PackageInformation.Name}.{PackageInformation.Version}.nupkg", stream.ToArray());
+		File.WriteAllText($"{outputfolder}/{NuSpec.Path}", NuSpec.Content);
 		Console.WriteLine("Done!");
 	}
 
@@ -58,6 +70,9 @@ internal class Program
 			using MemoryStream stream = new();
 			module.Write(stream);
 			data = stream.ToArray();
+			Console.WriteLine($"Modified: {module.Name}");
+
+			File.WriteAllBytes(module.Assembly.Name+".dll", stream.ToArray());
 		}
 		return data;
 	}
