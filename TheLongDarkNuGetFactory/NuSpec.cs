@@ -22,11 +22,11 @@ internal static class NuSpec
 		    <dependencies>
 		      <group targetFramework="net6.0">
 		        <dependency id="AsmResolver.DotNet" version="6.0.0-beta.3" exclude="Build,Analyzers" />
-		        <dependency id="AssetRipper.Primitives" version="3.1.4" exclude="Build,Analyzers" />
-		        <dependency id="AssetsTools.NET" version="3.0.0-preview3" exclude="Build,Analyzers" />
+		        <dependency id="AssetRipper.Primitives" version="3.2.0" exclude="Build,Analyzers" />
+		        <dependency id="AssetsTools.NET" version="3.0.4" exclude="Build,Analyzers" />
 		        <dependency id="HarmonyX" version="2.10.2" exclude="Build,Analyzers" />
 		        <dependency id="Il2CppInterop.Runtime" version="1.5.1" exclude="Build,Analyzers" />
-		        <dependency id="LavaGang.MelonLoader" version="0.7.1" exclude="Build,Analyzers" />
+		        <dependency id="LavaGang.MelonLoader" version="0.7.2" exclude="Build,Analyzers" />
 				<dependency id="Newtonsoft.Json" version="13.0.4" exclude="Build,Analyzers" />
 		      </group>
 		    </dependencies>
@@ -34,5 +34,5 @@ internal static class NuSpec
 		</package>
 		""";
 	// MelonLoader doesn't have package references in its NuGet package, so we copy them from the .csproj file.
-	// https://github.com/LavaGang/MelonLoader/blob/v0.7.1/MelonLoader/MelonLoader.csproj
+	// https://github.com/LavaGang/MelonLoader/blob/v0.7.2/MelonLoader/MelonLoader.csproj
 }
